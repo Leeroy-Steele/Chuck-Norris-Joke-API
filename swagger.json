@@ -1,0 +1,216 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Chuck Norris Database API",
+        "description": "Retrieve, store, update & delete random Chuck Norris facts",
+        "license": {
+            "name": "Lee",
+            "url": "localhost:3000"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "tags": [{
+        "name": "Chuck Norris Database",
+        "description": ""
+        }],
+
+    "schemes": ["http"],
+
+    "paths": {
+        "/showDatabase": {
+            "get": {
+                "tags": [
+                "Get From Database"
+                ],
+                "summary": "Show all entries in database or select just one by ID",
+                "parameters": [{
+                    "name": "id",
+                    "in": "query",
+                    "description": "(Only if you want to retrieve one) enter the ID of the entry "
+                    }
+                ],
+                "responses": {
+                    "200": {
+                     "description": "Response will be a JSON containing the stored data"
+                    }
+                }
+                }
+            },
+        "/showJokes": {
+            "get": {
+                "tags": [
+                "Get From Database"
+                ],
+                "summary": "Show all entries (jokes only) in the database or select just one by id",
+                "parameters": [{
+                    "name": "id",
+                    "in": "query",
+                    "description": "(Only if you want to retrieve one) enter the _ID of the entry "
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response will be a JSON containing only the joke data"
+                    }
+                }
+                }
+            },
+        "/showNumberOfJokes": {
+            "get": {
+                "tags": [
+                "Get From Database"
+                ],
+                "summary": "Show total number of joke entries in database",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Response will be similar to 'Number of jokes are: 20'"
+                    }
+                }
+                }
+            },
+        "/showShortestJoke": {
+            "get": {
+                "tags": [
+                "Get From Database"
+                ],
+                "summary": "Show the shortest joke in the database",
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response will be a JSON containing the shortest joke"
+                    }
+                }
+                }
+            },
+
+        "/addToDatabaseFromAPI": {
+            "post": {
+                "tags": [
+                "Change Database"
+                ],
+                "summary": "add 1 OR many Chuck Norris joked to the database from 3rd party API",
+                "parameters": [
+                {
+                "name": "totalToAdd",
+                "in": "query",
+                "description": "number of new entries"
+                },
+                {
+                "name": "category",
+                "in": "query",
+                "description": "specify category for new entries or leave blank for random (dev,movie,food,celebrity,science,political,sport,religion,animal,music,history,travel,career,money,fashion)"
+                },
+                {
+                "name": "orderIDs",
+                "in": "query",
+                "description": "specify true/false to reorder IDs to start from 1"
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response will be similar to 'Inserting : 2 entries'"
+                    }
+                }
+                }
+            },
+        "/deleteByID": {
+            "delete": {
+                "tags": [
+                "Change Database"
+                ],
+                "summary": "delete one joke by ID",
+                "parameters": [
+                {
+                "name": "id",
+                "in": "query",
+                "description": "specify the id"
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response will be similar to 'Deleting 2 from database'"
+                    }
+                }
+                }
+            },
+        "/deleteAll": {
+            "delete": {
+                "tags": [
+                "Change Database"
+                ],
+                "summary": "delete everything from database",
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response will be: 'Deleted : everything from database'"
+                    }
+                }
+                }
+            },
+        "/changeID": {
+            "put": {
+                "tags": [
+                "Change Database"
+                ],
+                "summary": "changeID",
+                "parameters": [
+                {
+                "name": "current_id",
+                "in": "query",
+                "description": "Select joke by the current ID"
+                },
+                {
+                "name": "new_id",
+                "in": "query",
+                "description": "Enter a new ID"
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This worked"
+                    }
+                }
+                }
+            },
+        "/orderAll_IDs": {
+            "put": {
+                "tags": [
+                "Change Database"
+                ],
+                "summary": "order all IDs in the database to start from 1",
+                "parameters": [
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This worked"
+                    }
+                }
+                }
+            },
+        "/shuffle": {
+            "put": {
+                "tags": [
+                "Change Database"
+                ],
+                "summary": "shuffle database",
+                "parameters": [
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Now : shuffling database "
+                    }
+                }
+                }
+            }
+        }
+
+        
+}
+    
